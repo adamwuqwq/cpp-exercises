@@ -1,8 +1,6 @@
-# Mac
+# macOS
 .DS_Store
-
-# VSCode
-.vscode
+*.dSYM
 
 # Prerequisites
 *.d

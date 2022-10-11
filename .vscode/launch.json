@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "cpp-exercises: launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "cpp-exercises: build using g++",
+            "program": "${fileDirname}/a.out",
+            "stopAtEntry": false,
+            "launchCompleteCommand": "exec-run",
+            "linux": {
+              "MIMode": "gdb",
+              "miDebuggerPath": "/usr/bin/gdb"
+            },
+            "osx": {
+              "MIMode": "lldb"
+            },
+            "windows": {
+              "MIMode": "gdb",
+              "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe"
+            },
+            "cwd": "${workspaceRoot}/"
+          }
+    ]
+}
