@@ -45,11 +45,11 @@ void Stack::pop()
         _top--;
 }
 
-// Acces the topmost element
+// Access the topmost element
 Point Stack::top()
 {
     if (empty())
-        std::cerr << "Empty stack!" << std::endl;
-    else
-        return _data[_top];
+        throw std::out_of_range("Empty stack!");
+
+    return _data[_top];
 }
