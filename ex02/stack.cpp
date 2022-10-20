@@ -13,7 +13,7 @@ bool Stack::empty()
 // Check whether the stack is full
 bool Stack::full()
 {
-    if (_top == _max_size)
+    if (_top + 1 == _max_size)
         return true;
     else
         return false;
@@ -29,7 +29,7 @@ int Stack::size()
 // print an error message on std::cerr when overflow
 void Stack::push(Point a)
 {
-    if (_top + 1 > _max_size)
+    if (full())
         std::cerr << "Stack overflow!" << std::endl;
     else
         _data[++_top] = a;
@@ -39,7 +39,7 @@ void Stack::push(Point a)
 // print an error message on std::cerr when underflow
 void Stack::pop()
 {
-    if (_top == -1)
+    if (empty())
         std::cerr << "Stack underflow!" << std::endl;
     else
         _top--;
