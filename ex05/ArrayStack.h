@@ -48,6 +48,19 @@ public:
         std::copy(arr_stack._items, arr_stack._items + arr_stack._allocated_size, _items);
     }
 
+    // Move constructor
+    ArrayStack(ArrayStack &&arr_stack)
+    {
+        _num_items = arr_stack._num_items;
+        _allocated_size = arr_stack._allocated_size;
+        _items = arr_stack._items;
+
+        // Reset original object
+        arr_stack._items = nullptr;
+        arr_stack._num_items = 0;
+        arr_stack._allocated_size = 0;
+    }
+
     explicit ArrayStack(int allocated_size)
     {
         // initialize _num_items to 0, pre-allocate memory for an array of size allocated_size and make _items point to it
@@ -62,16 +75,36 @@ public:
         delete[] _items;
     }
 
-    // Overload assignment operator
+    // Copy assignment
     ArrayStack &operator=(const ArrayStack &arr_stack)
     {
         if (this == &arr_stack)
             return *this;
         
         delete[] _items;
+        _num_items = arr_stack._num_items;
+        _allocated_size = arr_stack._allocated_size;
         _items = new std::string[arr_stack._allocated_size];
-        *_items = *arr_stack._items;
-        //std::copy(arr_stack._items, arr_stack._items + arr_stack._allocated_size, _items);
+        std::copy(arr_stack._items, arr_stack._items + arr_stack._allocated_size, _items);
+        return *this;
+    }
+
+    // Move assignment
+    ArrayStack &operator=(ArrayStack &&arr_stack)
+    {
+        if (this == &arr_stack)
+            return *this;
+        
+        delete[] _items;
+        _num_items = arr_stack._num_items;
+        _allocated_size = arr_stack._allocated_size;
+        _items = arr_stack._items;
+
+        // Reset original object
+        arr_stack._items = nullptr;
+        arr_stack._num_items = 0;
+        arr_stack._allocated_size = 0;
+
         return *this;
     }
 

@@ -1,18 +1,5 @@
 #include "ArrayStack.h"
 
-// To validate if contents in a and b are identical
-bool validator(ArrayStack &a, ArrayStack &b)
-{
-    while (!a.empty() && !b.empty())
-    {
-        if (a.top() != b.top())
-            return false;
-
-        a.pop(), b.pop();
-    }
-    return true;
-}
-
 int main(void)
 {
     // Question 1 --------
@@ -47,9 +34,9 @@ int main(void)
     stack6 = stack6;
 
     // Verify that the content of the stacks 'stack1' and 'stack3', 'stack2' and 'stack4' and 'stack1' and 'stack5' are identical.
-    std::cout << "stack1, stack3: " << validator(stack1, stack3) << std::endl;
-    std::cout << "stack2, stack4: " << validator(stack2, stack4) << std::endl;
-    std::cout << "stack1, stack5: " << validator(stack1, stack5) << std::endl;
+    std::cout << "stack1: " << stack1.top() << " " << stack1.size() << "; stack3: " << stack3.top() << " " << stack3.size() << std::endl;
+    std::cout << "stack2: " << stack2.top() << " " << stack2.size() << "; stack4: " << stack4.top() << " " << stack4.size() << std::endl;
+    std::cout << "stack1: " << stack1.top() << " " << stack1.size() << "; stack5: " << stack5.top() << " " << stack5.size() << std::endl;
 
     // Push several items in 'stack6'.
     stack6.push("stack6_A");
@@ -58,6 +45,18 @@ int main(void)
     // Test for stack6
     std::cout << stack6.top() << " " << stack6.size() << std::endl;
     // -------- End of Question 2
+
+    // Question 3 --------
+    // Move
+    ArrayStack stack7 = std::move(stack5);
+    stack6 = std::move(stack2);
+
+    // Write tests to check your implementation of the move semantic. 
+    std::cout << "stack7: " << stack7.top() << " " << stack7.size() << std::endl;
+    std::cout << "stack5: " << stack5.size() << std::endl;
+    std::cout << "stack6: " << stack6.top() << " " << stack6.size() << std::endl;
+    std::cout << "stack2: " << stack2.size() << std::endl;
+    // -------- End of Question 3
 
     return 0;
 }
