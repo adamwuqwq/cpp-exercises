@@ -39,6 +39,15 @@ public:
         _items = nullptr;
     }
 
+    // Copy constructor
+    ArrayStack(const ArrayStack &arr_stack)
+    {
+        _num_items = arr_stack._num_items;
+        _allocated_size = arr_stack._allocated_size;
+        _items = new std::string[arr_stack._allocated_size];
+        std::copy(arr_stack._items, arr_stack._items + arr_stack._allocated_size, _items);
+    }
+
     explicit ArrayStack(int allocated_size)
     {
         // initialize _num_items to 0, pre-allocate memory for an array of size allocated_size and make _items point to it
@@ -51,6 +60,19 @@ public:
     ~ArrayStack()
     {
         delete[] _items;
+    }
+
+    // Overload assignment operator
+    ArrayStack &operator=(const ArrayStack &arr_stack)
+    {
+        if (this == &arr_stack)
+            return *this;
+        
+        delete[] _items;
+        _items = new std::string[arr_stack._allocated_size];
+        *_items = *arr_stack._items;
+        //std::copy(arr_stack._items, arr_stack._items + arr_stack._allocated_size, _items);
+        return *this;
     }
 
     // Push item to the stack
