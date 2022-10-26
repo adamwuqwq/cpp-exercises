@@ -1,9 +1,23 @@
+#ifndef SHAPE_H
+#define SHAPE_H
 #include <iostream>
 
 class Shape
 {
+protected:
+    std::string _name;
+
 public:
-    // Return the string corresponding to the name of the primitive (e.g. circle, rectangle, ...
+    // Default (null) constructor
+    Shape(){};
+
+    // The (virtual) destructor
+    virtual ~Shape(){};
+
+    // Copy constructor
+    Shape(const Shape &src){};
+
+    // Return the string corresponding to the name of the primitive (e.g. circle, rectangle, ...)
     virtual std::string get_name() const = 0;
 
     // Return the area of the shape
@@ -14,7 +28,6 @@ public:
 
     // Return a copy of the object (using the copy constructor)
     virtual Shape *clone() const = 0;
-
-    // The (virtual) destructor
-    virtual ~Shape() = 0;
 };
+
+#endif
