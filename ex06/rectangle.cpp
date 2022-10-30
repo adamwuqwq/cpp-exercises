@@ -10,7 +10,7 @@ Rectangle::Rectangle() : _width(0.0f), _height(0.0f)
 Rectangle::Rectangle(Point left_corner, float width, float height) : _width(width), _height(height)
 {
     _name = "rectangle";
-    _left_corner.set_position(left_corner.getX(), left_corner.getY());
+    _left_corner.set_position(left_corner.get_x(), left_corner.get_y());
 }
 
 // Copy constructor

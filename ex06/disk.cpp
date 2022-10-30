@@ -1,5 +1,5 @@
 #include "disk.h"
-#define PI 3.14159265359
+#define PI 3.14159265359f
 
 // Default (null) constructor
 Disk::Disk() : _radius(0.0f)
@@ -11,7 +11,7 @@ Disk::Disk() : _radius(0.0f)
 Disk::Disk(Point corner, float radius) : _radius(radius)
 {
     _name = "disk";
-    _center.set_position(corner.getX(), corner.getY());
+    _center.set_position(corner.get_x(), corner.get_y());
 }
 
 // Copy constructor

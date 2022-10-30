@@ -14,13 +14,13 @@ public:
     Point(float x, float y) : _x_coordinate(x), _y_coordinate(y) {};
 
     // Return x coordinate
-    float getX() const
+    float get_x() const
     {
         return _x_coordinate;
     }
 
     // Return y coordinate
-    float getY() const
+    float get_y() const
     {
         return _y_coordinate;
     }
