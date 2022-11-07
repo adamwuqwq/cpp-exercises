@@ -70,8 +70,8 @@ int main(void)
 
     // Test for Polygon class:
     // Test for a 4-vertice polygon(rectangle), area should be equivalent to rect_2: "polygon, 6"
-    Point *pnt_1 = new Point[4];
-    pnt_1[0] = Point(1.0f, 1.0f), pnt_1[1] = Point(4.0f, 1.0f), pnt_1[2] = Point(4.0f, 3.0f), pnt_1[3] = Point(1.0f, 1.0f);
+    Point *pnt_1 = new Point[5];
+    pnt_1[0] = Point(1.0f, 1.0f), pnt_1[1] = Point(4.0f, 1.0f), pnt_1[2] = Point(4.0f, 3.0f), pnt_1[3] = Point(1.0f, 3.0f), pnt_1[4] = Point(1.0f, 1.0f);
     Polygon poly_1(4, pnt_1);
     std::cout << "poly_1: " << poly_1.get_name() << ", " << poly_1.compute_area() << std::endl;
 
@@ -79,7 +79,7 @@ int main(void)
     const float radius = 4.0f;
     const int vertice_num = 64;
     const float angle = 2 * PI / vertice_num;
-    Point *pnt_2 = new Point[vertice_num];
+    Point *pnt_2 = new Point[vertice_num + 1];
     // Generate the vertices
     for (int i = 0; i < vertice_num; i++)
     {
@@ -87,6 +87,7 @@ int main(void)
         float y = radius * sin(-PI + angle * i);
         pnt_2[i] = Point(x, y);     
     }
+    pnt_2[vertice_num] = pnt_2[0];
     // Test output, should be "polygon, a number close to 50.27"
     Polygon poly_2(vertice_num, pnt_2);
     std::cout << "poly_2: " << poly_2.get_name() << ", " << poly_2.compute_area() << std::endl;

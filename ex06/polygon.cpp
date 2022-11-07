@@ -23,7 +23,7 @@ Polygon::Polygon(const Polygon &src)
 {
     _name = src._name;
     _number_points = src._number_points;
-    _point_list = new Point[src._number_points];
+    _point_list = new Point[src._number_points + 1];
     std::copy(src._point_list, src._point_list + src._number_points, _point_list);
 }
 
