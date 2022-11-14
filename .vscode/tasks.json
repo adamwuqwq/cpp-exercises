@@ -4,8 +4,9 @@
         {
             "type": "shell",
             "label": "cpp-exercises: build using g++",
-            "command": "/usr/bin/g++",
+            "command": "g++",
             "args": [
+                "-std=c++11",
                 "-g",
                 "${fileDirname}/*.cpp",
                 "-o",
