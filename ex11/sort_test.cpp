@@ -17,11 +17,13 @@ int main(void)
     std::vector<int> arr = {114, 810, 798, 1999, 3, -1, 6592};
 
     // Before sort
+    std::cout << "before: ";
     show_values(arr);
 
     // After sort
+    std::cout << "after: ";
     PL4::sort(arr.begin(), arr.end());
     show_values(arr);
-    
+
     return 0;
 }
