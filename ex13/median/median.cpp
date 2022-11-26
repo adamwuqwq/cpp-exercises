@@ -10,7 +10,14 @@ float compute_median(std::vector<float> arr)
 {
     auto m = arr.begin() + arr.size() / 2;
     std::nth_element(arr.begin(), m, arr.end());
-    return arr[arr.size() / 2];
+
+    if (arr.size() % 2 == 0)
+    {
+        std::nth_element(arr.begin(), m - 1, arr.end());
+        return (arr[arr.size() / 2] + arr[arr.size() / 2 - 1]) / 2;
+    }
+    else
+        return arr[arr.size() / 2];
 }
 
 std::vector<float> generate_nums(int size)
@@ -36,18 +43,26 @@ void print_nums(const std::vector<float> &arr)
 
 int main(void)
 {
-    std::vector<float> nums = generate_nums(15);
+    std::vector<float> nums_odd = generate_nums(15);
+    std::vector<float> nums_even = generate_nums(18);
 
     // Print out all the numbers
-    print_nums(nums);
+    std::cout << "Odd(n = 15): ";
+    print_nums(nums_odd);
+    std::cout << "Even(n = 18): ";
+    print_nums(nums_even);
 
-    // Find the median
-    std::cout << compute_median(nums) << std::endl;
+    // Find the medians
+    std::cout << "Median of odd(n = 15): " << compute_median(nums_odd) << std::endl;
+    std::cout << "Median of even(n = 18): " << compute_median(nums_even) << std::endl;
 
-    // Use std::sort to check if it is correct
-    std::vector<float> nums_sorted = nums;
-    std::sort(nums_sorted.begin(), nums_sorted.end());
-    print_nums(nums_sorted);
+    // Use std::sort to check if the results are correct
+    std::sort(nums_odd.begin(), nums_odd.end());
+    std::sort(nums_even.begin(), nums_even.end());
+    std::cout << "Odd(n = 15) after sorting: ";
+    print_nums(nums_odd);
+    std::cout << "Even(n = 18) after sorting: ";
+    print_nums(nums_even);
 
     return 0;
 }
